@@ -1,0 +1,24 @@
+{% extends 'weather/base.html' %}
+
+{% block title %}Gloomy: A Weather Checker App{% endblock %}
+
+{% block content %}
+<p>Get the latest weather updates here.</p>
+
+<form method="POST" action="{% url 'home' %}">
+    {% csrf_token %}
+    <input type="text" name="location" placeholder="Enter city name" required>
+    <button type="submit">Get Weather</button>
+</form>
+
+{% if weather_data %}
+  {% if weather_data.error %}
+    <p>{{ weather_data.error }}</p>
+  {% else %}
+    <h3>Weather in {{ weather_data.name }}</h3>
+    <p>Temperature: {{ weather_data.main.temp }}°C</p>
+    <p>Weather: {{ weather_data.weather.0.description }}</p>
+    <p>Humidity: {{ weather_data.main.humidity }}%</p>
+  {% endif %}
+{% endif %}
+{% endblock %}

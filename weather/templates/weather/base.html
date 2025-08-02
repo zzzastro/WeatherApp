@@ -1,0 +1,22 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Gloomy: A Weather Checker App{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'weather/css/styles.css' %}">  
+</head>
+<center><body>
+    <header>
+        <h1>Gloomy: A Weather Checker App</h1>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 Weather App</p>
+    </footer>
+</body></center>
+</html>
